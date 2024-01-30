@@ -1,9 +1,10 @@
-name: Release Workflow
+name: Create Release
+run-name: ${{ github.actor }} is running release note
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   release:
@@ -11,17 +12,20 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.7.0
         with:
           node-version: 14
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Synchronize Packages
+        run: yarn
 
-      - name: Run Semantic Release
+      - name: Update Main Branch
+        run: git fetch origin main --unshallow
+
+      - name: Create Release ( ${{ matrix.package }} )
+        run: yarn md-automation -- --command create-release --packages ${{ matrix.package }} --since origin/main
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npx semantic-release

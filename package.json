@@ -1,0 +1,20 @@
+{
+  "name": "version-history",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhanusengar/version-history.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhanusengar/version-history/issues"
+  },
+  "homepage": "https://github.com/bhanusengar/version-history#readme"
+}
